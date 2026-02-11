@@ -1,0 +1,7 @@
+class GridManager:
+    
+    def __init__(self, rows, cols):
+        self.grid = [[False for _ in range(cols)] for _ in range(rows)]
+    
+    def set_cell(self, row_index, col_index, state):
+        self.grid[row_index][col_index] = state
