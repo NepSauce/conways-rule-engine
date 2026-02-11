@@ -1,6 +1,6 @@
-from conways_game.grid_manager import GridManager
-from conways_game.grid_manager import CellManager
-from conways_game.grid_manager import CellState
+from conways_game.env_manager import GridManager
+from conways_game.env_manager import CellManager
+from conways_game.env_manager import CellState
 
 class GameOfLife:
     
