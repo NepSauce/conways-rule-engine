@@ -1,8 +1,6 @@
-from conways_game.env_manager import GridManager
-from conways_game.cell_manager import CellManager
-from conways_game.cell_manager import CellState
+from conways_game.env_manager import EnvManager
 
 class GameOfLife:
     
     def __init__(self, rows, cols):
-        self.grid_manager = GridManager(rows, cols)
+        self.env_manager = EnvManager(rows, cols)
