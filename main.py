@@ -19,4 +19,13 @@ if __name__ == "__main__":
     print(f'grid_height: {grid_height}, grid_width: {grid_width}')
 
     game = GameOfLife(dimension_rule_arr, survival_rule_arr)
+    
+    # Add a glider pattern as an example
+    glider = [(1, 2), (2, 3), (3, 1), (3, 2), (3, 3)]
+    game.env_manager.set_initial_pattern(glider)
+    
+    # Add a blinker pattern
+    blinker = [(10, 10), (10, 11), (10, 12)]
+    game.env_manager.set_initial_pattern(blinker)
+    
     game.run(game_rule_arr);
