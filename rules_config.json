@@ -2,7 +2,12 @@
     "survival_min_rule": 2,
     "survival_max_rule": 3,
     "birth_rule": 3,
-    "tick_rule": 15,
-    "height_rule": 20,
-    "width_rule": 20
+    "tick_rule": 16,
+    "height_rule": 100,
+    "width_rule": 100,
+    "initial_spawn_direction": "bottom",
+    "initial_spawn_rows": 10,
+    "initial_alive_percentage": 0.4,
+    "continuous_spawn_rate": 0.3,
+    "continuous_spawn_direction": "bottom"
 }

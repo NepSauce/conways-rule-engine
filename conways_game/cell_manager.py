@@ -1,6 +1,7 @@
 class CellManager:
-    def __init__(self):
-        pass
+    def __init__(self, dimension_rule_arr, survival_rule_arr):
+        self.dimension_rule_arr = dimension_rule_arr
+        self.survival_rule_arr = survival_rule_arr
 
     # Moore-neighborhood counting algorithm
     def count_live_neighbors(self, grid, row_index, col_index):

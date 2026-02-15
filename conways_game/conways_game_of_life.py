@@ -1,3 +1,4 @@
+import pygame
 from conways_game.env_manager import EnvManager
 from conways_game.pygame_module.pygame_grid import PygameGrid
 
@@ -10,17 +11,35 @@ class GameOfLife:
         self.isPaused = False
 
     def run(self, game_rule_arr):
-        self.pygame_grid.run()
-
-        while not self.isPaused:
-            self.update()
-            self.render()
+        import pygame
+        import time
+        
+        tick_rate = game_rule_arr[0]
+        running = True
+        
+        while running:
+            time.sleep(1 / tick_rate)
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            
+            if not self.isPaused:
+                self.update()
+                self.render()
+        
+        pygame.quit()
 
     def update(self):
         self.env_manager.update_grid()
+        self.pygame_grid.grid = self.env_manager.grid
+        self.pygame_grid.rows = len(self.env_manager.grid)
+        self.pygame_grid.cols = len(self.env_manager.grid[0]) if self.pygame_grid.rows > 0 else 0
 
     def render(self):
+        self.pygame_grid.screen.fill((0, 0, 0))
         self.pygame_grid.draw_squares()
+        pygame.display.flip()
 
 
     def pause(self):
