@@ -27,7 +27,7 @@ class EnvManager:
                 next_grid[i][j] = self.cell_manager.determine_next_state(
                     (i, j), self.survival_rule_arr[0], 
                     self.survival_rule_arr[1], [self.survival_rule_arr[2]])
-                
+        
         self.grid = next_grid
         return self.grid
 
