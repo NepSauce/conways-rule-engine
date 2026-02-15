@@ -20,12 +20,13 @@ if __name__ == "__main__":
 
     game = GameOfLife(dimension_rule_arr, survival_rule_arr)
     
-    # Add a glider pattern as an example
-    glider = [(1, 2), (2, 3), (3, 1), (3, 2), (3, 3)]
-    game.env_manager.set_initial_pattern(glider)
-    
-    # Add a blinker pattern
-    blinker = [(10, 10), (10, 11), (10, 12)]
-    game.env_manager.set_initial_pattern(blinker)
+    # Random initialization like Google's Conway's Game of Life
+    import random
+    random_cells = []
+    for i in range(grid_height):
+        for j in range(grid_width):
+            if random.random() < 0.3:  # 30% chance of being alive
+                random_cells.append((i, j))
+    game.env_manager.set_initial_pattern(random_cells)
     
     game.run(game_rule_arr);
