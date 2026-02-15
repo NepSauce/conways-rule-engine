@@ -9,6 +9,8 @@ class EnvManager:
         self.survival_rule_arr = survival_rule_arr
         self.grid = [[CellState.DEAD for _ in range(dimension_rule_arr[1])] 
                      for _ in range(dimension_rule_arr[0])]
+        self.continuous_spawn_rate = 0.0
+        self.continuous_spawn_direction = 'none'
     
     def set_initial_pattern(self, pattern_coords):
         """Set initial alive cells from a list of (row, col) coordinates"""
@@ -28,6 +30,26 @@ class EnvManager:
                     (i, j), self.survival_rule_arr[0], 
                     self.survival_rule_arr[1], [self.survival_rule_arr[2]])
         
+        # Continuously spawn new cells based on configuration
+        if self.continuous_spawn_rate > 0:
+            import random
+            if self.continuous_spawn_direction == "bottom":
+                for j in range(self.dimension_rule_arr[1]):
+                    if random.random() < self.continuous_spawn_rate:
+                        next_grid[self.dimension_rule_arr[0] - 1][j] = CellState.ALIVE
+            elif self.continuous_spawn_direction == "top":
+                for j in range(self.dimension_rule_arr[1]):
+                    if random.random() < self.continuous_spawn_rate:
+                        next_grid[0][j] = CellState.ALIVE
+            elif self.continuous_spawn_direction == "left":
+                for i in range(self.dimension_rule_arr[0]):
+                    if random.random() < self.continuous_spawn_rate:
+                        next_grid[i][0] = CellState.ALIVE
+            elif self.continuous_spawn_direction == "right":
+                for i in range(self.dimension_rule_arr[0]):
+                    if random.random() < self.continuous_spawn_rate:
+                        next_grid[i][self.dimension_rule_arr[1] - 1] = CellState.ALIVE
+                
         self.grid = next_grid
         return self.grid
 

@@ -13,6 +13,8 @@ if __name__ == "__main__":
     spawn_direction = rule_reader.get('initial_spawn_direction', 'bottom')
     spawn_rows = rule_reader.get('initial_spawn_rows', 4)
     alive_percentage = rule_reader.get('initial_alive_percentage', 0.4)
+    continuous_spawn_rate = rule_reader.get('continuous_spawn_rate', 0.0)
+    continuous_spawn_direction = rule_reader.get('continuous_spawn_direction', 'none')
 
     dimension_rule_arr = [grid_height, grid_width]
     survival_rule_arr = [survival_min_rule, survival_max_rule, birth_rule]
@@ -22,6 +24,10 @@ if __name__ == "__main__":
     print(f'grid_height: {grid_height}, grid_width: {grid_width}')
 
     game = GameOfLife(dimension_rule_arr, survival_rule_arr)
+    
+    # Set continuous spawning configuration
+    game.env_manager.continuous_spawn_rate = continuous_spawn_rate
+    game.env_manager.continuous_spawn_direction = continuous_spawn_direction
     
     # Initialize with random cells based on configuration
     import random
