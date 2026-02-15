@@ -2,12 +2,14 @@ import pygame
 
 class PygameGrid:
     def __init__(self, grid, resolution=(800, 800), line_width=3):
+        pygame.init()
         self.grid = grid
         self.resolution = resolution
         self.line_width = line_width
         self.rows = len(grid)
         self.cols = len(grid[0]) if self.rows > 0 else 0
         self.screen = pygame.display.set_mode(resolution)
+        pygame.display.set_caption("Conway's Game of Life")
         self.clock = pygame.time.Clock()
 
     def evaluate_dimensions(self):
@@ -25,10 +27,15 @@ class PygameGrid:
         return row * square_height
 
     def draw_squares(self):
+        from conways_game.cell_manager import CellState
         square_width, square_height = self.evaluate_dimensions()
         for row in range(self.rows):
             for column in range(self.cols):
-                color = (100, 100, 100)  # Default color, will update for alive/dead
+                # Use cell state to determine color
+                if self.grid[row][column] == CellState.ALIVE:
+                    color = (255, 255, 255)  # White for alive
+                else:
+                    color = (0, 0, 0)  # Black for dead
                 x = int(self.convert_column_to_x(column, square_width))
                 y = int(self.convert_row_to_y(row, square_height))
                 w = int(square_width)
