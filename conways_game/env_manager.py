@@ -1,6 +1,8 @@
+import random
 from conways_game import cell_manager
 from conways_game.cell_manager import CellState 
 from conways_game.cell_manager import CellManager
+
 
 class EnvManager: 
     def __init__(self, dimension_rule_arr, survival_rule_arr):
@@ -30,9 +32,7 @@ class EnvManager:
                     (i, j), self.survival_rule_arr[0], 
                     self.survival_rule_arr[1], [self.survival_rule_arr[2]])
         
-        # Continuously spawn new cells based on configuration
         if self.continuous_spawn_rate > 0:
-            import random
             if self.continuous_spawn_direction == "bottom":
                 for j in range(self.dimension_rule_arr[1]):
                     if random.random() < self.continuous_spawn_rate:

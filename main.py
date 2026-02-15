@@ -1,3 +1,4 @@
+import random
 from conways_game.conways_game_of_life import GameOfLife
 from utils.json_reader import JsonReader
 
@@ -30,7 +31,6 @@ if __name__ == "__main__":
     game.env_manager.continuous_spawn_direction = continuous_spawn_direction
     
     # Initialize with random cells based on configuration
-    import random
     random_cells = []
     
     if spawn_direction == "bottom":
