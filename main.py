@@ -18,5 +18,5 @@ if __name__ == "__main__":
 
     print(f'grid_height: {grid_height}, grid_width: {grid_width}')
 
-    game = GameOfLife(grid_height, grid_width)
-    game.run();
+    game = GameOfLife(dimension_rule_arr, survival_rule_arr)
+    game.run(game_rule_arr);
