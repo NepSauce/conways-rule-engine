@@ -1,3 +1,4 @@
+import pygame
 from conways_game.env_manager import EnvManager
 from conways_game.pygame_module.pygame_grid import PygameGrid
 
@@ -38,7 +39,6 @@ class GameOfLife:
     def render(self):
         self.pygame_grid.screen.fill((0, 0, 0))
         self.pygame_grid.draw_squares()
-        import pygame
         pygame.display.flip()
 
 

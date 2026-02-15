@@ -42,12 +42,13 @@ class PygameGrid:
 
     def run(self):
         running = True
-        
+
         while running:
             self.clock.tick(15)
             self.screen.fill((0, 0, 0))
             self.draw_squares()
             pygame.display.flip()
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
