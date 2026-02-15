@@ -3,13 +3,13 @@ from conways_game.pygame_module.pygame_grid import PygameGrid
 
 class GameOfLife:
     def __init__(self, dimension_rule_arr, survival_rule_arr):
-        self.env_manager = EnvManager(dimension_rule_arr[0], dimension_rule_arr[1])
+        self.env_manager = EnvManager(dimension_rule_arr, survival_rule_arr)
         self.pygame_grid = PygameGrid(self.env_manager.grid)
         self.dimension_rule_arr = dimension_rule_arr
         self.survival_rule_arr = survival_rule_arr
         self.isPaused = False
 
-    def run(self):
+    def run(self, game_rule_arr):
         self.pygame_grid.run()
 
         while not self.isPaused:
@@ -17,7 +17,7 @@ class GameOfLife:
             self.render()
 
     def update(self):
-        self.env_manager.update_grid(self.dimension_rule_arr, self.survival_rule_arr)
+        self.env_manager.update_grid()
 
     def render(self):
         self.pygame_grid.draw_squares()

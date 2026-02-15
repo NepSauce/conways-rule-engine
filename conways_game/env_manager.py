@@ -6,12 +6,10 @@ class EnvManager:
         self.cell_manager = CellManager(dimension_rule_arr, survival_rule_arr)
         self.dimension_rule_arr = dimension_rule_arr
         self.survival_rule_arr = survival_rule_arr
-        self.grid = [[CellState.DEAD for _ in range(dimension_rule_arr[1])] for _ in range(dimension_rule_arr[0])]
-    
-    def set_cell(self, row_index, col_index, state):
-        self.grid[row_index][col_index] = state
+        self.grid = [[CellState.DEAD for _ in range(dimension_rule_arr[1])] 
+                     for _ in range(dimension_rule_arr[0])]
 
-    def update_grid(self, dimension_rule_arr, survival_rule_arr):
+    def update_grid(self):
         # Placeholder for the logic to update the grid based on the rules
         pass
 
