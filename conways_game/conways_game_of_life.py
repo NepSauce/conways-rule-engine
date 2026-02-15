@@ -1,4 +1,5 @@
 import pygame
+import time
 from conways_game.env_manager import EnvManager
 from conways_game.pygame_module.pygame_grid import PygameGrid
 
@@ -11,9 +12,6 @@ class GameOfLife:
         self.isPaused = False
 
     def run(self, game_rule_arr):
-        import pygame
-        import time
-        
         tick_rate = game_rule_arr[0]
         running = True
         

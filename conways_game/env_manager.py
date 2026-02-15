@@ -15,7 +15,6 @@ class EnvManager:
         self.continuous_spawn_direction = 'none'
     
     def set_initial_pattern(self, pattern_coords):
-        """Set initial alive cells from a list of (row, col) coordinates"""
         for row, col in pattern_coords:
             if 0 <= row < self.dimension_rule_arr[0] and 0 <= col < self.dimension_rule_arr[1]:
                 self.grid[row][col] = CellState.ALIVE
